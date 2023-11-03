@@ -4,7 +4,7 @@ import java.util.Comparator;
  * Sort using merge sort.
  *
  * @author Lydia Ye
- * @author Jayson Kunkel (for the codes finished in class for merge sort lab)
+ * @author Jayson Kunkel (for the parts finished in class for merge sort lab)
  */
 
 public class MergeSort implements Sorter {

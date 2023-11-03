@@ -3,7 +3,8 @@ import java.util.Comparator;
 /**
  * Sort using Quicksort.
  *
- * @author Your Name Here
+ * @author Lydia Ye
+ * @author Julian Kim (for the parts finished in class for quick sort lab)
  */
 
 public class Quicksort implements Sorter {
