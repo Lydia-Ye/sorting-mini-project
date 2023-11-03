@@ -1,22 +1,13 @@
 import java.util.Comparator;
 
 /**
- * Sort using YeLydia Sort, a modified version of Tim sort.
+ * Sort using YeLydia Sort, a modified version of Tim sort algorithm.
  *
  * @author Lydia Ye
  */
 
 public class YeLydiaSort implements Sorter {
-
-  public static void main(String[] args) {
-    Integer[] original = { 1, 4, 4, 5, 1, 5, 6, 3, 6, 3};
-    SORTER.sort(original, (x, y) -> x == y ? 0 : x < y ? -1 : 1);
-
-    for (int i =0; i<original.length; i++) {
-      System.out.println(original[i]);
-    }
-  }
-
+  
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
@@ -25,8 +16,8 @@ public class YeLydiaSort implements Sorter {
    * The one sorter you can access.
    */
   public static Sorter SORTER = new YeLydiaSort();
-
-  int runLength = 32;
+  static final int MIN_MERGE = 32;
+  int runLength = MIN_MERGE;
 
 
   // +--------------+------------------------------------------------
@@ -61,17 +52,17 @@ public class YeLydiaSort implements Sorter {
   public <T> void yeLydiaSort(T[] vals, int lo, int hi, Comparator<? super T> order) {
     // Divide the array into runs and use insertion sort to sort each run.
     for (int start = lo; start < hi; start += this.runLength) {
-        int end = Math.min(start + this.runLength, hi);
-        InsertionSort.insertionSort(vals, start, end, order);
+      int end = Math.min(start + this.runLength, hi);
+      InsertionSort.insertionSort(vals, start, end, order);
     } // for
 
     // Merge the sorted runs using merge sort.
     for (int split = this.runLength; split < hi - lo; split = 2 * split) {
-        for (int start = lo; start < hi; start += 2 * split) {
-            int mid = start + split - 1;
-            int end = Math.min(start + 2 * split - 1, hi - 1);
-            MergeSort.merge(vals, start, mid, end, order);
-        } // for
+      for (int start = lo; start < hi; start += 2 * split) {
+        int mid = start + split - 1;
+        int end = Math.min(start + 2 * split - 1, hi - 1);
+        MergeSort.merge(vals, start, mid, end, order);
+      } // for
     } // for
   } // yeLydiaSort
 } // class YeLydiaSort

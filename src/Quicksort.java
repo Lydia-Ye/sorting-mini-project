@@ -32,11 +32,17 @@ public class Quicksort implements Sorter {
   // | Methods |
   // +---------+
 
+  /**
+   * Sort an array using quick sort algorithm.
+   */
   @Override
   public <T> void sort(T[] values, Comparator<? super T> order) {
     quickSort(values, order, 0, values.length);
   } // sort(T[], Comparator<? super T>
 
+  /**
+   * A helper method for sort using quick sort algorithm.
+   */
   private static <T> void quickSort(T[] values, Comparator<? super T> compare, int lb, int ub) {
     /* Base case */
     if (ub - lb <= 1) {

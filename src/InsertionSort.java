@@ -8,15 +8,6 @@ import java.util.Comparator;
 
 public class InsertionSort implements Sorter {
 
-  public static void main(String[] args) {
-    Integer[] original = { 1, 4, 4, 5, 1, 5, 6, 3, 6, 3};
-    SORTER.sort(original, (x, y) -> x == y ? 0 : x < y ? -1 : 1);
-
-    for (int i =0; i<original.length; i++) {
-      System.out.println(original[i]);
-    }
-  }
-
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
@@ -40,6 +31,9 @@ public class InsertionSort implements Sorter {
   // | Methods |
   // +---------+
 
+  /**
+   * Sort an array using the insertion sort algorithm.
+   */
   @Override
   public <T> void sort(T[] values, Comparator<? super T> order) {
     insertionSort(values, 0, values.length, order);
